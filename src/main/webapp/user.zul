@@ -1,0 +1,19 @@
+<window border = "normal" width = "700px" Title = "User">	
+	<grid>	
+		<columns>
+			<column>
+				<vlayout>
+					<label value="Successful Authorization!"  />  
+				 	<label value="Your role: User"  /> 
+				</vlayout>
+			</column>
+		</columns>		
+		<rows>
+			<row spans = "3" align = "center">
+				<button id="changeButton" label="Change password"  autodisable="self" href = "change.zul" />													  								
+				<button id="deleteButton" label="Delete account"  autodisable="self"  href = "delete.zul"/>	
+				<button id = "backButton" label = "back" autodisable="self" href = "index.zul"/>				
+			</row>
+		</rows>		
+	</grid>		
+</window>

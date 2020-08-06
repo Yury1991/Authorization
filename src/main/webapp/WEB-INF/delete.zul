@@ -1,0 +1,18 @@
+<window border = "normal" width = "500px" Title = "Delete account">
+	<grid>	
+		<rows>
+			<row>
+				<label value= "Delete account"/>
+			</row>
+			<row>
+				Deleted login <textbox id = "delete"  hflex="1" constraint="no empty: Please enter login" />
+			</row>
+			<row>
+				<button id = "confirmButton" label = "confirm" autodisable="self"/>
+			</row>
+			<row>
+				<button id = "backButton" label = "back" href = "user.zul"/>
+			</row>
+		</rows>				   
+	</grid>			
+</window>

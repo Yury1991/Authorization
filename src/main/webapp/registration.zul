@@ -1,0 +1,24 @@
+<window border = "normal" width = "500px" Title = "Registration"
+	apply = "com.github.Yury1991.Authorization.RegistrationController">	
+		<grid hflex="1"> 
+			<rows>	
+				<row spans = "1" align = "center">
+					<label value="Registration" />      			
+				</row>     		       		
+		    	<row spans = "2">
+			    	<label value="Login"/>	    		
+					<textbox id="newLogin"  hflex="1" constraint="no empty: Please enter login"/> 				
+				</row>	
+				<row spans = "2">
+					<label value="Password"/>	    		
+					<textbox id="newPassword"  hflex="1" constraint="no empty: Please enter password"/>				
+				</row>	
+				<row spans = "2">
+					<hlayout>
+						<button id = "createButton" label = "create" autodisable="self"/>
+						<button id = "backButton" label = "back" autodisable="self" href = "index.zul"/>					
+					</hlayout>
+				</row>
+			</rows>   			    	   
+	    </grid>
+</window>

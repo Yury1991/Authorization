@@ -1,0 +1,16 @@
+<window border = "normal" width = "500px" Title = "Error!">	
+	<grid>
+		<rows>	
+			<row >
+				<label value="Error Authorization!" />
+			</row>
+			<row >
+				<label value="Wrong data, please try again" />
+			</row>
+			<row spans = "1" align = "center"> 		
+				<button id="backButton" label="back" autodisable="self"
+					href="index.zul" />
+			</row>
+		</rows>
+	</grid>
+</window>

@@ -1,0 +1,27 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+	<window border="normal" width="500px" title="Welcome!"
+		apply="com.github.Yury1991.Authorization.IndexController">
+		<grid hflex="1"> 
+			<rows>	
+				<row spans = "1" align = "center">
+					<label value="Authorization" />      			
+				</row>     		       		
+		    	<row spans = "2">
+			    	<label value="Login"/>	    		
+					<textbox id="login"  hflex="1" constraint="no empty: Please enter login"/> 				
+				</row>	
+				<row spans = "2">
+					<label value="Password"/>	    		
+					<textbox id="password"  hflex="1" constraint="no empty: Please enter password"/>				
+				</row>	
+				<row spans="2" align="center">
+					<hlayout>																	
+							<button id="registerButton" label="Register"  autodisable="self" href = "registration.zul"/>													  								
+							<button id="enterButton" label="Enter"  autodisable="self"/>						
+					</hlayout>
+				</row>
+			</rows>   			    	   
+	    </grid>
+    </window>
+</zk>
