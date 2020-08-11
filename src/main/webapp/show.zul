@@ -1,5 +1,4 @@
-<window border = "normal" width = "500px" Title = "Change Password"
-	apply = "com.github.Yury1991.Authorization.ChangeController">
+<window border = "normal" width = "500px" Title = "Show Database">
 	<grid>	
 		<rows>
 			<row>
@@ -8,8 +7,10 @@
 			<row>
 				New Password <textbox id = "changePass"  hflex="1" constraint="no empty: Please enter password" />
 			</row>
-			<row spans = "2" align = "center">
-				<button id = "confirmButton" label = "confirm" autodisable="self"/>			
+			<row>
+				<button id = "confirmButton" label = "confirm" autodisable="self"/>
+			</row>
+			<row>
 				<button id = "backButton" label = "back" href = "user.zul"/>
 			</row>
 		</rows>				   

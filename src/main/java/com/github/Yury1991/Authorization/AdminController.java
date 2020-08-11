@@ -12,6 +12,11 @@ import org.zkoss.zul.Button;
 //Управление интерфейсом - admin
 
 public class AdminController extends SelectorComposer<Component> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Wire
 	private Button showButton;
 
@@ -20,13 +25,9 @@ public class AdminController extends SelectorComposer<Component> {
 
 	@Listen("onClick =  #showButton")
 	public void showDb() throws SQLException, IOException {
-		AccessData a = new AccessData();
-		a.show();
+		SqlDao sqlDao = new SqlDao();		
+		sqlDao.show();
 	}
 
-	@Listen("onClick = #deleteButton")
-	public void delete() {
-		AccessData a = new AccessData();
-
-	}
+	
 }

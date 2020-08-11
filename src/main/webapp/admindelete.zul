@@ -1,0 +1,17 @@
+<window border = "normal" width = "1000px" Title = "Delete Account"
+	apply = "com.github.Yury1991.Authorization.AdminDeleteController">
+	<grid>	
+		<rows>
+			<row>
+				<label value= "Enter login which you want to delete"/>
+			</row>
+			<row>
+				Login <textbox id = "deleteAccout"  hflex="1" constraint="no empty: Please enter login" />
+			</row>
+			<row spans = "2" align = "center">
+				<button id = "deleteButton" label = "delete" autodisable="self"/>			
+				<button id = "backButton" label = "back" href = "user.zul"/>
+			</row>
+		</rows>				   
+	</grid>			
+</window>

@@ -30,9 +30,10 @@ public class RegistrationController extends SelectorComposer<Component> {
 	@Listen ("onClick = #createButton")
 	public void create() throws SQLException, IOException {			
 		User user = new User(newLogin.getValue(), newPassword.getValue());
-		AccessData a = new AccessData();
-		a.create(user);
-			
+		SqlDao sqlDao = new SqlDao();
+		sqlDao.create(user);		
+		createButton.setHref("user.zul");
+				
 	}
 		
 	

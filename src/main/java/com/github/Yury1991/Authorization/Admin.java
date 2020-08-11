@@ -2,8 +2,28 @@ package com.github.Yury1991.Authorization;
 
 
 // Роль - администратор, имеет больше возможностей, чем пользователь
-public class Admin {		
+public class Admin extends Subject{		
 	//----------Данные-----------------
-	public final static String admLogin = "admin";		//логин
-	public final static String admPassword = "admin";	//пароль
+	private  final String login ;		//логин
+	private  final String password;	//пароль	
+	
+	Admin(){
+		login = "admin";
+		password = "admin";
+	}
+	
+	
+	public String getLogin() {		
+		return login;
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	
+	
+		
+	
+	
+	
 }

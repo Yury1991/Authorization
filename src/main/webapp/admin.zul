@@ -9,12 +9,11 @@
 				 	</vlayout>
 				</column>	
 			</columns>	
-				 <rows>
-				 	<row>
-					 	<hlayout>
-					 		<row spans = "3" align = "center">				 	
+				 <rows>	
+				 	<row spans = "3" align = "center">				 	
+					 	<hlayout>					 					 	
 							<button id = "showButton" label = "show" autodisable="self"/>
-							<button id = "deleteButton" label = "delete" autodisable="self"/>								
+							<button id = "deleteButton" label = "delete" autodisable="self" href = "admindelete.zul"/>								
 							<button id = "backButton" label = "back" autodisable="self" href = "index.zul"/>
 						</hlayout>
 					</row>				

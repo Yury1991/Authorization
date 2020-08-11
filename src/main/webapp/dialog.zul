@@ -1,0 +1,14 @@
+<window border = "normal" width = "500px" Title = "Dialog"
+	apply = "com.github.Yury1991.Authorization.DialogController">
+	<grid>	
+		<rows>
+			<row>
+				<label value= "Are you sure"/>
+			</row>			
+			<row spans = "2" align = "center">
+				<button id = "yesButton" label = "Yes" autodisable="self"/>			
+				<button id = "noButton" label = "No" href = "user.zul"/>
+			</row>
+		</rows>				   
+	</grid>			
+</window>

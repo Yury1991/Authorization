@@ -12,19 +12,37 @@ import org.zkoss.zul.Textbox;
 
 //Управление интерфейсом - change
 
-public class ChangeController extends SelectorComposer<Component>{
-	
+public class ChangeController extends SelectorComposer<Component>{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Wire
 	private Textbox changePass;
 	@Wire
 	private Button confirmButton;
 
-	@Listen("onCick = #confirmButton")
-	public void changePass() throws ClassNotFoundException, IOException, SQLException {
-		AccessData a = new AccessData();
-		User user = a.load();
-		user.setPassword(changePass.getValue());
-		a.change(user);
+	@Listen("onClick = #confirmButton")
+	public void changePassword() throws ClassNotFoundException, IOException, SQLException {	
+		System.out.println("Confirm button pressed!");
+		if(!Subject.subjects.isEmpty()) {
+			SqlDao sqlDao = new SqlDao(); 
+			User user = (User)Subject.subjects.get(0);	
+			user.setPassword(changePass.getValue());
+			sqlDao.change(user);
+			confirmButton.setHref("successChange.zul");
+			Subject.subjects.clear();
+			
+		}
+		else {
+			System.out.println("AccessData is empty!");
+		}
+
+	
+		
+		
+		
+		
 	}
 
 

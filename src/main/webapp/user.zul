@@ -1,4 +1,4 @@
-<window border = "normal" width = "700px" Title = "User">	
+<window border = "normal" width = "900px" Title = "User" >	
 	<grid>	
 		<columns>
 			<column>
@@ -11,7 +11,7 @@
 		<rows>
 			<row spans = "3" align = "center">
 				<button id="changeButton" label="Change password"  autodisable="self" href = "change.zul" />													  								
-				<button id="deleteButton" label="Delete account"  autodisable="self"  href = "delete.zul"/>	
+				<button id="deleteButton" label="Delete account"  autodisable="self"  href = "dialog.zul"/>	
 				<button id = "backButton" label = "back" autodisable="self" href = "index.zul"/>				
 			</row>
 		</rows>		

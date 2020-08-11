@@ -11,7 +11,7 @@
   </appender>
   
   <logger name="com.github.Yury1991.Authorization" level="INFO" />
-  <logger name="com.github.Yury1991.Authorization.AccessData" level="DEBUG" />
+  <logger name="com.github.Yury1991.Authorization.logs" level="WARN" />
   
   <root level="DEBUG">
     <appender-ref ref="FILE" />

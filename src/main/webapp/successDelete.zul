@@ -1,0 +1,16 @@
+<window border = "normal" width = "500px" Title = "Success Delete!">	
+	<grid>
+		<rows>	
+			<row >
+				<label value="Delete Succesful!" />
+			</row>
+			<row >
+				<label value="Account Deleted!" />
+			</row>
+			<row spans = "1" align = "center"> 		
+				<button id="backButton" label="back" autodisable="self"
+					href="index.zul" />
+			</row>
+		</rows>
+	</grid>
+</window>

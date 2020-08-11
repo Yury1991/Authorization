@@ -5,7 +5,6 @@ package com.github.Yury1991.Authorization;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.io.NotSerializableException;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -31,17 +30,16 @@ public class IndexController extends SelectorComposer<Component> implements Seri
 	
 	@Listen("onClick = #enterButton")
 	public void enter() throws SQLException, IOException {
-
+		Admin admin = new Admin();
 		User user = new User(login.getValue(), password.getValue());		
-		AccessData a = new AccessData();
-		boolean search = a.check(user);		
+		SqlDao sqlDao =  new SqlDao();
+		boolean search = sqlDao.check(user);			
 		if(search == true ) {
-			if(("admin" == Admin.admLogin) && ("admin" == Admin.admPassword)){	//				
-				enterButton.setHref("admin.zul");			// user.getlogin() не подходит и login.getValue()
+			if((user.getLogin()== admin.getLogin()) && (user.getPassword() == admin.getPassword())){				
+				enterButton.setHref("admin.zul");			
 			}
 			else {
-				System.out.println();
-				a.save(user);
+				System.out.println();				
 				enterButton.setHref("user.zul");				
 			}			
 		}

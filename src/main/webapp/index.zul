@@ -1,6 +1,6 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
 <zk>
-	<window border="normal" width="500px" title="Welcome!"
+	<window border="normal" width="500px" title="Welcome!" position = "center"  
 		apply="com.github.Yury1991.Authorization.IndexController">
 		<grid hflex="1"> 
 			<rows>	
