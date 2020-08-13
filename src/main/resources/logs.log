@@ -1,0 +1,5 @@
+233  [main] INFO  org.zkoss.zk.ui.http.WebManager - Starting ZK 9.0.0.1 CE (build: 2020051911)
+254  [main] INFO  org.zkoss.zk.ui.sys.ConfigParser - Loading system default
+316  [main] INFO  org.zkoss.zk.ui.sys.ConfigParser - Parsing jar:file:/D:/Programming/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Authorization/WEB-INF/lib/zul-9.0.0.1.jar!/metainfo/zk/zk.xml
+1542 [http-nio-8080-exec-2] INFO  o.z.u.resource.impl.LabelLoaderImpl - Loading labels for ru_RU
+1545 [http-nio-8080-exec-2] INFO  o.z.u.resource.impl.LabelLoaderImpl - Loading labels for ru
