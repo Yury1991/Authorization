@@ -1,4 +1,4 @@
-package com.github.Yury1991.Authorization;
+package com.github.yury1991.authorization;
 
 
 import java.io.IOException;
@@ -113,10 +113,10 @@ public class SqlDao implements Dao {
 
 	@Override
 	public void delete(User user)throws SQLException, IOException {
-		 Admin admin = new Admin();
+		 
 		 Connecting connecting = new Connecting();	
 		 System.out.println("Try to delete");
-		 if(user.getLogin()!= admin.getLogin() && user.getPassword()!=admin.getPassword()) {
+		 if(user.getLogin()!= Admin.getInstance().getLogin() && user.getPassword()!=Admin.getInstance().getPassword()) {
 			 try  {							
 				 PreparedStatement preparedStatement = connecting.conn.prepareStatement(SQL.DELETE); 					
 				 preparedStatement.setString(1, user.getLogin());						 

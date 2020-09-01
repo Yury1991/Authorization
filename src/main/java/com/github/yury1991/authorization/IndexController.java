@@ -1,4 +1,4 @@
-package com.github.Yury1991.Authorization;
+package com.github.yury1991.authorization;
 
 
 
@@ -29,13 +29,12 @@ public class IndexController extends SelectorComposer<Component> implements Seri
 	private Button registerButton;
 	
 	@Listen("onClick = #enterButton")
-	public void enter() throws SQLException, IOException {
-		Admin admin = new Admin();
+	public void enter() throws SQLException, IOException {		
 		User user = new User(login.getValue(), password.getValue());		
 		SqlDao sqlDao =  new SqlDao();
 		boolean search = sqlDao.check(user);			
 		if(search == true ) {
-			if((user.getLogin()== admin.getLogin()) && (user.getPassword() == admin.getPassword())){				
+			if((user.getLogin() == Admin.getInstance().getLogin()) && (user.getPassword() == Admin.getInstance().getPassword())){				
 				enterButton.setHref("admin.zul");			
 			}
 			else {
