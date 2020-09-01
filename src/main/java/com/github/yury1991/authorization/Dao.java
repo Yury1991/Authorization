@@ -1,22 +1,40 @@
 package com.github.yury1991.authorization;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**Интерфейс для работы с пользователем*/
 public interface Dao {
-	/**Создать пользователя*/
+	
+	/**Создать нового пользователя*/
 	public void create(User user)throws SQLException, IOException; 
 	
-	/**Проверить данные */
+	/** Проверка данных пользователя <br>
+	 * @return  флаг поиска*/
 	public boolean check(User user)throws SQLException, IOException; 
 	
-	/**Изменить пароль */
+	/** Изменение пароля пользователя*/
 	public void change(User user)throws SQLException, IOException;   
 	
-	/**Посмотреть бд */
+	/**Показать всю базу данных*/
 	public void show()throws SQLException, IOException;			
 	
 	/**Удалить учетную запись */
 	public void delete(User user)throws SQLException, IOException;	
+	
+	/**@return preparedStatement
+	 * @link Dao#connectTemplate(User, String)*/
+	public PreparedStatement connectTemplate(User user, String sql) 
+			throws SQLException, IOException;	
+	
+	/**Метод поиска исключений*/
+	public void catchException(Exception ex)throws SQLException, IOException;
+	
+	/**Перегрузка метода connectTemplate*/
+	public ResultSet connectTemplate(String sql) throws SQLException, IOException;
+	
+	/**Проверка прав пользователя*/
+	public boolean isAdmin(User user);
 }
 

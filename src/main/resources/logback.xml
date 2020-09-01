@@ -16,13 +16,15 @@
     </encoder>
   </appender>
   
-  <logger name="com.github.Yury1991.Authorization" level="INFO" /> 
-  <logger name="com.github.Yury1991.Authorization.logs" level="WARN"> 
+  <logger name="com.github.yury1991.authorization" level="INFO" /> 
+  <logger name="com.github.yury1991.authorization.logs" level="INFO" />
+  		<appender-ref ref="FILE" /> 
+  <logger name="com.github.yury1991.authorization.logs" level="WARN"> 
         <appender-ref ref="FILE" /> 
     </logger>
  
   <root level="DEBUG">
-    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
   </root>
   <root level="INFO">
     <appender-ref ref="FILE" />

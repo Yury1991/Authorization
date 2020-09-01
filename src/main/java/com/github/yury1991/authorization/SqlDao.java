@@ -9,127 +9,151 @@ import java.sql.Statement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/** Функциональный класс реализующий интерфейс {@link Dao} */
 public class SqlDao implements Dao {
-
-	private static final Logger logger 
-	= LoggerFactory.getLogger(SqlDao.class);  // создание логгера, пока не работает
+	
+	/**Логгер*/
+	private static final Logger logger = LoggerFactory.getLogger(SqlDao.class);  
+	
+	/**Переменные для операций с базой данных:*/
 	public PreparedStatement preparedStatement;
 	public Statement statement;
 	public ResultSet resultSet;	
+	
+	/**Конструктор по умолчанию*/
 	SqlDao(){
 		
+		
+	}
+	
+	/**Методы интерфейса: =======================================================*/
+	
+	/**@link {@link Dao#isAdmin(User)}*/
+	@Override
+	public boolean isAdmin(User user) {
+		if(user.getLogin() == Admin.getInstance().getLogin() 
+				 && user.getPassword()== Admin.getInstance().getPassword()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**@link {@link Dao#connectTemplate(User, String)}*/
+	@Override
+    public PreparedStatement connectTemplate(User user, String sql) 
+    		throws SQLException, IOException{	
+		
+		Connecting connecting = new Connecting();
+		preparedStatement = connecting.conn.prepareStatement(sql);
+		
+		if(sql!=SQL.DELETE) {												    
+			preparedStatement.setString(1, user.getLogin());
+			preparedStatement.setString(2, user.getPassword());		
+		}
+		else {
+			preparedStatement.setString(1, user.getLogin());
+		}		
+		return preparedStatement;
+	}	
+	
+	@Override
+    public ResultSet connectTemplate(String sql) 
+    		throws SQLException, IOException{
+		Connecting connecting = new Connecting();
+		preparedStatement = connecting.conn.prepareStatement(sql);	
+		statement = connecting.conn.createStatement();
+		resultSet = statement.executeQuery(sql);
+		return resultSet;
 	}
 
+	
+	/**@link {@link Dao#catchException(Exception)}*/
 	@Override
-	public void create(User user) throws SQLException, IOException {
-		Connecting connecting = new Connecting();          
-		try  {								 	
-			preparedStatement = connecting.conn.prepareStatement(SQL.INSERT);									    
-			preparedStatement.setString(1, user.getLogin());
-			preparedStatement.setString(2, user.getPassword());							        
-			preparedStatement.executeUpdate();
-			System.out.println("User created!");
+	public void catchException(Exception ex)throws SQLException, IOException{
+		ex.printStackTrace();
+		logger.debug(ex.getMessage());		
+	}
+
+	/**@link {@link Dao#create(User)}*/
+	@Override
+	public void create(User user) throws SQLException, IOException {		          
+		try  {			
+			preparedStatement = connectTemplate(user, SQL.INSERT);									        
+			preparedStatement.executeUpdate();			
 			Subject.subjects.add(user);
 		}	
 		catch(Exception ex) {
-			System.out.println("User cannot be created!");
-			System.out.println(ex);
-			ex.printStackTrace();
-			logger.debug(ex.getMessage());
-		}		
-		connecting.disconnect(connecting.conn);
+			catchException(ex);
+		}	
 	}
 
-	@Override
+	/**@link {@link Dao#check(User)}*/
+	@Override	
 	public boolean check(User user) throws SQLException, IOException {
-		boolean isFind = false;				//флаг поиска/проверки
-		Connecting connecting = new Connecting();			 
+		/**Флаг поиска*/
+		boolean isFind = false;				
+					 
 		try  {	   
-			PreparedStatement preparedStatement = connecting.conn.prepareStatement(SQL.SELECT);
-			preparedStatement.setString(1, user.getLogin());
-			preparedStatement.setString(2, user.getPassword());							    
+			preparedStatement = connectTemplate(user, SQL.SELECT);										    
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {						        
-				System.out.println("Subject Found");
+			if(resultSet.next()) {		        
 				isFind = true;					
-				Subject.subjects.add(user);
-				System.out.println("Subject - " + user.getLogin()+ " "+ user.getPassword() + " добавлен");
-				System.out.println("Size of users list is " + Subject.subjects.size());
+				Subject.subjects.add(user);				
 			}
-			else {				
-				System.out.println("Subject cannot be found!");
+			else {		
+				logger.debug("Subject cannot be found!");				
 			}
 		}catch(Exception ex) {			
-			System.out.println("Subject cannot be found!");
-			System.out.println(ex);
-			ex.printStackTrace();
-			logger.debug(ex.getMessage());
-		}				
-		connecting.disconnect(connecting.conn);
+			catchException(ex);
+		}		
 		return isFind; 
 	}
 
+	/**@link {@link Dao#change(User)}*/
 	@Override
-	public void change(User user) throws SQLException, IOException{
-		 Connecting connecting = new Connecting();	
-		 System.out.println("Try to change");
+	public void change(User user) throws SQLException, IOException{	
 		 try  {							
-			 PreparedStatement preparedStatement = connecting.conn.prepareStatement(SQL.CHANGE); 					
-			 preparedStatement.setString(1, user.getPassword());	
-			 preparedStatement.setString(2, user.getLogin());
-			 preparedStatement.executeUpdate();
-			 System.out.println("Password successfuly changed!");
+			 preparedStatement = connectTemplate(user, SQL.CHANGE);			 
+			 preparedStatement.executeUpdate();			 
 		 }							       
 		 catch(Exception ex) {
-			 System.out.println("Password can't be changed!");
-			 System.out.println(ex);
-			 ex.printStackTrace();
-			 logger.debug(ex.getMessage());
+			 catchException(ex);
 		 }
 	}
 
+	/**@link {@link Dao#show()}*/
 	@Override
-	public void show() throws SQLException, IOException {
-		Connecting connecting = new Connecting();		       
-		 try  {									    
-			 preparedStatement = connecting.conn.prepareStatement(SQL.SHOW);	
-			 statement = connecting.conn.createStatement();
-			 resultSet = statement.executeQuery(SQL.SHOW);
+	public void show() throws SQLException, IOException {		       
+		 try  {   			 
+			 resultSet = connectTemplate(SQL.SHOW);
 			 while(resultSet.next()){
 				 String login = resultSet.getString("login");
-				 String pass = resultSet.getString("pass");					                   
-				 System.out.printf("%s  %s   \n", login, pass);
+				 String pass = resultSet.getString("pass");	
+				 logger.debug("%s  %s   \n", login, pass);				 
 			 }   			 
 		 }							       
 		 catch(Exception ex) {
-			 System.out.println("User cannot be created!");
-			 System.out.println(ex);
-			 ex.printStackTrace();
-			 logger.debug(ex.getMessage());
-		 }
-		 connecting.disconnect(connecting.conn);
+			 catchException(ex);
+		 }		
 	}
 
+	/**@link {@link Dao#delete(User)}*/
 	@Override
-	public void delete(User user)throws SQLException, IOException {
+	public void delete(User user)throws SQLException, IOException {	 
 		 
-		 Connecting connecting = new Connecting();	
-		 System.out.println("Try to delete");
-		 if(user.getLogin()!= Admin.getInstance().getLogin() && user.getPassword()!=Admin.getInstance().getPassword()) {
-			 try  {							
-				 PreparedStatement preparedStatement = connecting.conn.prepareStatement(SQL.DELETE); 					
-				 preparedStatement.setString(1, user.getLogin());						 
-				 preparedStatement.executeUpdate();
-				 System.out.println("Account successfuly deleted!");
-			 }							       
-			 catch(Exception ex) {
-				 System.out.println("Account can't be deleted!!");
-				 System.out.println(ex);
-				 ex.printStackTrace();
-				 logger.debug(ex.getMessage());
-			 }
-		 }
-		 connecting.disconnect(connecting.conn);
+		 	if(!isAdmin(user)) {
+		 		try  {							
+					 preparedStatement = connectTemplate(user, SQL.DELETE);						 						 
+					 preparedStatement.executeUpdate();		 
+				 }							       
+				 catch(Exception ex) {
+					 catchException(ex);
+				 }
+		 	}
+		 	else {
+		 		logger.debug("Admin can't delete his account!");
+		 	}	 
 	}
 }

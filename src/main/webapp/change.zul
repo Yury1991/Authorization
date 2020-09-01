@@ -1,5 +1,5 @@
 <window border = "normal" width = "500px" Title = "Change Password"
-	apply = "com.github.Yury1991.Authorization.ChangeController">
+	apply = "com.github.yury1991.authorization.ChangeController">
 	<grid>	
 		<rows>
 			<row>

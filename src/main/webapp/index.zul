@@ -1,7 +1,7 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
 <zk>
 	<window border="normal" width="500px" title="Welcome!" position = "center"  
-		apply="com.github.Yury1991.Authorization.IndexController">
+		apply="com.github.yury1991.authorization.IndexController">
 		<grid hflex="1"> 
 			<rows>	
 				<row spans = "1" align = "center">

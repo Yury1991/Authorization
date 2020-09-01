@@ -1,14 +1,15 @@
 package com.github.yury1991.authorization;
 
 
-/** Роль - администратор, имеет больше возможностей, чем пользователь. <br>
+/** Класс - администратор,  <br>
+ * Наследован от класса Subject {@link Subject} <br>
  * Паттер проектирования - Singleton */
 
 public class Admin extends Subject{		
-	/**логин*/
+	/**логин администратора*/
 	private static final String LOGIN = "admin" ;	
 	
-	/**пароль*/	
+	/**пароль администратора*/	
 	private  static final String PASSWORD = "admin";	
 	
 	/**Конструктор*/	

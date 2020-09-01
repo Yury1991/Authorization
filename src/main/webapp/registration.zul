@@ -1,5 +1,5 @@
 <window border = "normal" width = "500px" Title = "Registration"
-	apply = "com.github.Yury1991.Authorization.RegistrationController">	
+	apply = "com.github.yury1991.authorization.RegistrationController">	
 		<grid hflex="1"> 
 			<rows>	
 				<row spans = "1" align = "center">

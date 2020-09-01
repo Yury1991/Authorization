@@ -1,5 +1,5 @@
 <window border = "normal" width = "500px" Title = "Dialog"
-	apply = "com.github.Yury1991.Authorization.DialogController">
+	apply = "com.github.yury1991.authorization.DialogController">
 	<grid>	
 		<rows>
 			<row>

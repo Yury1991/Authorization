@@ -10,7 +10,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Textbox;
 
-//Управление интерфейсом - registration
+/**Управление интерфейсом - registration*/
 public class RegistrationController extends SelectorComposer<Component> {
 	
 
@@ -32,11 +32,7 @@ public class RegistrationController extends SelectorComposer<Component> {
 		User user = new User(newLogin.getValue(), newPassword.getValue());
 		SqlDao sqlDao = new SqlDao();
 		sqlDao.create(user);		
-		createButton.setHref("user.zul");
-				
-	}
-		
-	
-	
+		createButton.setHref("user.zul");			
+	}	
 }	
 

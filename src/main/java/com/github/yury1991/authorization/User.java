@@ -1,14 +1,14 @@
 package com.github.yury1991.authorization;
 
 
-
-/**Роль - пользователь, наследуесть от Subject*/
+/**Класс пользователя, 
+  наследован от класса Subject {@link Subject}*/
 public class User extends Subject {
 	/** Данные -------------------------------------------*/
-	/**логин*/
+	/**логин пользователя*/
 	private String login;	
-	/** пароль*/
-	private String password;			// пароль
+	/** пароль пользователя */
+	private String password;			
 	
 	
 	/**Конструктор по умолчанию*/
@@ -29,7 +29,7 @@ public class User extends Subject {
 	public String getLogin() {		
 		return login;
 	}
-	
+	/**@return логин*/
 	public  void setLogin(String login) {		
 		this.login = login;
 	}

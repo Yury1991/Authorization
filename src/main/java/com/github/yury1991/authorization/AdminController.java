@@ -9,7 +9,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 
-//Управление интерфейсом - admin
+/**Управление интерфейсом - admin*/
 
 public class AdminController extends SelectorComposer<Component> {
 	/**
