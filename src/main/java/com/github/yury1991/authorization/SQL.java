@@ -1,4 +1,4 @@
-package com.github.Yury1991.Authorization;
+package com.github.yury1991.authorization;
 
 public class SQL {  
 	    
@@ -8,9 +8,5 @@ public class SQL {
 		public static final String SELECT = "SELECT (login, pass) FROM "
 				+ "auth_table WHERE login = ? AND pass = ?";
 		public static final String SHOW = "SELECT * FROM auth_table";
-		public static final String DELETE = "DELETE  FROM auth_table WHERE login = ?";	
-		
-		
-		
-	
+		public static final String DELETE = "DELETE  FROM auth_table WHERE login = ?";		
 }

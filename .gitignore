@@ -1,1 +1,5 @@
+#Исключаем ненужные файлы
 /target/
+/.settings/
+/*.classpath
+/*.project

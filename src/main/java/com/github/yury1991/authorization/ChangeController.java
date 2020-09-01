@@ -1,4 +1,4 @@
-package com.github.Yury1991.Authorization;
+package com.github.yury1991.authorization;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,11 +17,14 @@ public class ChangeController extends SelectorComposer<Component>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	/** Кнопка changePass - изменение пароля пользователя*/
 	@Wire
 	private Textbox changePass;
+	/** Кнопка ConfirmButton - изменение пароля пользователя*/
 	@Wire
 	private Button confirmButton;
 
+	/** Обработка нажатия на кнопку*/
 	@Listen("onClick = #confirmButton")
 	public void changePassword() throws ClassNotFoundException, IOException, SQLException {	
 		System.out.println("Confirm button pressed!");
@@ -36,14 +39,6 @@ public class ChangeController extends SelectorComposer<Component>{
 		}
 		else {
 			System.out.println("AccessData is empty!");
-		}
-
-	
-		
-		
-		
-		
+		}		
 	}
-
-
 }

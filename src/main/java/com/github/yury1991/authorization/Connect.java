@@ -1,4 +1,4 @@
-package com.github.Yury1991.Authorization;
+package com.github.yury1991.authorization;
 
 import java.sql.Connection;
 import java.sql.SQLException;
